@@ -1,6 +1,6 @@
 import Loadable from '@@/Loadable'
-// const App = Loadable(() => import('@/pages/app'))
+const App = Loadable(() => import('@/pages/app'))
 export {
-  // App,
+  App,
   // Login,
 }
