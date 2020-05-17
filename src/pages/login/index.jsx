@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Input, Button, Icon } from 'antd';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { post } from '@/utils/request'
 import './style.less'
 
 export default @Form.create({})
@@ -9,6 +10,12 @@ class Login extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        post('http://api.baxiaobu.com/index.php/home/v1/login',values)
+          .then(res => {
+            if(res.status === '200'){
+              this.props.history.push('/');
+            }
+          })
         console.log('Received values of form: ', values);
       }
     });
@@ -42,7 +49,7 @@ class Login extends Component {
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
+              登录
             </Button>
             Or <Link to="/reg">register now!</Link>
           </Form.Item>
