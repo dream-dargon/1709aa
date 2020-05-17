@@ -16,7 +16,6 @@ class Reg extends Component {
               this.props.history.push('/login');
             }
           })
-        console.log('Received values of form: ', values);
       }
     });
   };

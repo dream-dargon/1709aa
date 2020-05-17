@@ -1,10 +1,19 @@
 import React, { Component } from 'react'
 import { Form, Input, Button, Icon } from 'antd';
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { post } from '@/utils/request'
+import { setLogin } from '@/actions/login'
 import './style.less'
 
-export default @Form.create({})
+export default @connect(state => {
+  return {}
+},{
+  setLogin
+})
+
+@Form.create({})
+
 class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
@@ -14,9 +23,9 @@ class Login extends Component {
           .then(res => {
             if(res.status === '200'){
               this.props.history.push('/');
+              this.props.setLogin(res.data)
             }
           })
-        console.log('Received values of form: ', values);
       }
     });
   };
