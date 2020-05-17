@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon } from 'antd';
+import { NavLink, Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Charts from '@/pages/charts'
 import './style.less'
 
 const { Header, Content, Sider } = Layout;
@@ -34,29 +36,36 @@ class App extends Component {
           }}
         >
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+          <Menu theme="dark" mode="inline">
             <Menu.Item key="1">
-              <Icon type="user" />
-              <span className="nav-text">nav 1</span>
+              <NavLink to='/chart'>
+                <Icon type="user" />
+                <span className="nav-text">Chart</span>
+              </NavLink>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="video-camera" />
-              <span className="nav-text">nav 2</span>
+              <span className="nav-text">Table</span>
             </Menu.Item>
             <Menu.Item key="3">
               <Icon type="upload" />
-              <span className="nav-text">nav 3</span>
+              <span className="nav-text">Form Elements</span>
             </Menu.Item>
             <Menu.Item key="4">
               <Icon type="user" />
-              <span className="nav-text">nav 4</span>
+              <span className="nav-text">Sammple Pages</span>
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }} />
           <Content style={{ margin: '24px 16px 0' }}>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>content</div>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+              <Switch>
+                <Route path="/chart" component={Charts} />
+                <Redirect to='/chart' />
+              </Switch>
+            </div>
           </Content>
         </Layout>
       </Layout>
