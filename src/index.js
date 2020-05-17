@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Router from '@/router'
 import './index.less';
-import App from './App';
 
 ReactDOM.render(
-  <App />,
+  <Router />,
   document.getElementById('root')
 );
 
